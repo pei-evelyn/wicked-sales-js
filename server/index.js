@@ -31,7 +31,7 @@ app.get('/api/products', (req, res, next) => {
 
   db.query(sql)
     .then(result => {
-      res.status(200).json(result.rows[0]);
+      res.status(200).json(result.rows);
     })
     .catch(err => next(err));
 });
