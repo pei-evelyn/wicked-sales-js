@@ -26,8 +26,7 @@ class ProductList extends React.Component {
   }
 
   render() {
-    const productItems = this.state.products.slice();
-    const products = productItems.map(product =>
+    const products = this.state.products.map(product =>
       <ProductListItem key={product.productId} product={product} />
     );
     return (

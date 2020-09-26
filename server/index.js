@@ -30,6 +30,33 @@ app.get('/api/products', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/products/:productId', (req, res, next) => {
+  const productId = parseInt(req.params.productId, 10);
+  if (productId < 0 || isNaN(productId)) {
+    return res.status(400).json({
+      error: 'Product ID must be valid'
+    });
+  }
+
+  const sql = `
+    select *
+    from "products"
+    where "productId" = $1
+  `;
+
+  const value = [productId];
+
+  db.query(sql, value)
+    .then(result => {
+      if (result.rows.length === 0) {
+        next(new ClientError(`ProductId ${productId} does not exist`, 404));
+      } else {
+        res.status(200).json(result.rows[0]);
+      }
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
