@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header';
-import ProductList from './product-list';
+// import ProductList from './product-list';
+import ProductDetails from './product-details';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class App extends React.Component {
     return (
       <>
         <Header text="$ Wicked Sales" />
-        <ProductList className="mt-4"/>
+        <ProductDetails className="mt-4"/>
       </>
     );
   }
