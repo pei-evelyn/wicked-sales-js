@@ -9,6 +9,15 @@ class ProductList extends React.Component {
     };
   }
 
+  getProducts() {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(products => this.setState({
+        products: products
+      }))
+      .catch(err => console.error(err));
+  }
+
   render() {
     return (
       <div className="container mt-5 bg-light">
