@@ -32,7 +32,6 @@ app.get('/api/products', (req, res, next) => {
 
 app.get('/api/products/:productId', (req, res, next) => {
   const productId = parseInt(req.params.productId, 10);
-
   if (productId < 0 || isNaN(productId)) {
     return res.status(400).json({
       error: 'Product ID must be valid'
@@ -43,8 +42,8 @@ app.get('/api/products/:productId', (req, res, next) => {
     select *
     from "products"
     where "productId" = $1
-    returning *
   `;
+
   const value = [productId];
 
   db.query(sql, value)
