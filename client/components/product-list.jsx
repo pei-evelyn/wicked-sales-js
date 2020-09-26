@@ -11,29 +11,41 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <>
-        <div className="row">
+      <div className="container mt-5 bg-light">
+        <div className="row mb-4">
           <div className="col-lg">
             <ProductListItem item="Sock" />
+          </div>
+          <div className="col-lg">
             <ProductListItem item="Sock" />
+          </div>
+          <div className="col-lg">
             <ProductListItem item="Sock" />
           </div>
         </div>
-        <div className="row">
+        <div className="row mb-4">
           <div className="col-lg">
             <ProductListItem item="Sock" />
+          </div>
+          <div className="col-lg">
             <ProductListItem item="Sock" />
+          </div>
+          <div className="col-lg">
             <ProductListItem item="Sock" />
           </div>
         </div>
-        <div className="row">
+        <div className="row mb-4">
           <div className="col-lg">
             <ProductListItem item="Sock" />
+          </div>
+          <div className="col-lg">
             <ProductListItem item="Sock" />
+          </div>
+          <div className="col-lg">
             <ProductListItem item="Sock" />
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
