@@ -49,7 +49,7 @@ app.get('/api/products/:productId', (req, res, next) => {
   db.query(sql, value)
     .then(result => {
       if (result.rows.length === 0) {
-        next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
+        next(new ClientError(`ProductId ${productId} does not exist`, 404));
       } else {
         res.status(200).json(result.rows[0]);
       }
