@@ -8,12 +8,17 @@ class ProductDetails extends React.Component {
     };
   }
 
+  componentDidMount(productId) {
+    fetch(`/api/products/${productId}`)
+      .then(res => res.json())
+      .then(product => this.setState({
+        product: product
+      }))
+      .catch(err => console.error(err));
+  }
+
   render() {
-    return (
-      <div className="container">
-        <div className="row"></div>
-      </div>
-    );
+    return null;
   }
 }
 
