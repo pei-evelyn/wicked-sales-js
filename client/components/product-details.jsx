@@ -6,6 +6,7 @@ class ProductDetails extends React.Component {
     this.state = {
       product: null
     };
+    this.formatPrice = this.formatPrice.bind(this);
   }
 
   componentDidMount() {
@@ -15,6 +16,16 @@ class ProductDetails extends React.Component {
         product: product
       }))
       .catch(err => console.error(err));
+  }
+
+  formatPrice() {
+    if (this.state.product) {
+      const unformatPrice = this.state.product.price;
+      const priceArr = JSON.stringify(unformatPrice).split('');
+      priceArr.splice((priceArr.length - 2), 0, '.');
+      const formatPrice = priceArr.join('');
+      return formatPrice;
+    }
   }
 
   render() {
@@ -35,11 +46,11 @@ class ProductDetails extends React.Component {
             </div>
             <div className="col-6">
               <h1 className="mb-3">{this.state.product.name}</h1>
-              <h3 className="mb-3">{this.state.product.price}</h3>
+              <h4 className="mb-3 text-muted">${this.formatPrice()}</h4>
               <p className="mr-3">{this.state.product.shortDescription}</p>
             </div>
           </div>
-          <div className="row mb-4 mx-3">
+          <div className="row mb-5 mx-3">
             <div className="col">
               <p>{this.state.product.longDescription}</p>
             </div>
