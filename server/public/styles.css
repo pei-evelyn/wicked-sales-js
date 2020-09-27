@@ -5,9 +5,13 @@
 
 .product-details-img {
   object-fit: scale-down;
+  width: 100%;
 }
 
 .img-container {
   width: 100%;
+}
 
+.back-arrow {
+  font-size: 14px;
 }

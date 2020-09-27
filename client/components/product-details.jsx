@@ -31,26 +31,26 @@ class ProductDetails extends React.Component {
   render() {
     if (this.state.product) {
       return (
-        <div className="container mt-5 border bg-white">
+        <div className="container my-5 border bg-white">
           <div className="row">
-            <div className="col m-5">
-              <div className="back-arrow">
+            <div className="col m-4">
+              <div className="back-arrow text-muted">
                 <i className="fas fa-chevron-left mr-2"></i>
                 <a>Back to catalog</a>
               </div>
             </div>
           </div>
-          <div className="row mb-5">
+          <div className="row mb-3">
             <div className="col-6 img-container d-flex justify-content-center align-items-center">
               <img src={this.state.product.image} alt="" className="product-details-img" />
             </div>
             <div className="col-6">
-              <h1 className="mb-3">{this.state.product.name}</h1>
-              <h4 className="mb-3 text-muted">${this.formatPrice()}</h4>
+              <h1 className="mb-4">{this.state.product.name}</h1>
+              <h4 className="mb-4 text-muted">${this.formatPrice()}</h4>
               <p className="mr-3">{this.state.product.shortDescription}</p>
             </div>
           </div>
-          <div className="row mb-5 mx-3">
+          <div className="row mb-4 mx-3">
             <div className="col">
               <p>{this.state.product.longDescription}</p>
             </div>
