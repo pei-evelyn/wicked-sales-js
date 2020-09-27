@@ -1,4 +1,13 @@
-img {
+.product-list-img {
   object-fit: scale-down;
   height: 300px;
+}
+
+.product-details-img {
+  object-fit: scale-down;
+}
+
+.img-container {
+  width: 100%;
+
 }

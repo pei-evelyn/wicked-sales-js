@@ -9,7 +9,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/products/1')
+    fetch('/api/products/2')
       .then(res => res.json())
       .then(product => this.setState({
         product: product
@@ -20,23 +20,26 @@ class ProductDetails extends React.Component {
   render() {
     if (this.state.product) {
       return (
-        <div className="container mt-5">
+        <div className="container mt-5 border bg-white">
           <div className="row">
-            <div className="col mb-5">
-              <a >Back to catalog</a>
+            <div className="col m-5">
+              <div className="back-arrow">
+                <i className="fas fa-chevron-left mr-2"></i>
+                <a>Back to catalog</a>
+              </div>
             </div>
           </div>
           <div className="row mb-5">
-            <div className="col-6">
-              <img src={this.state.product.image} alt="" />
+            <div className="col-6 img-container d-flex justify-content-center align-items-center">
+              <img src={this.state.product.image} alt="" className="product-details-img" />
             </div>
             <div className="col-6">
               <h1 className="mb-3">{this.state.product.name}</h1>
               <h3 className="mb-3">{this.state.product.price}</h3>
-              <p>{this.state.product.shortDescription}</p>
+              <p className="mr-3">{this.state.product.shortDescription}</p>
             </div>
           </div>
-          <div className="row">
+          <div className="row mb-4 mx-3">
             <div className="col">
               <p>{this.state.product.longDescription}</p>
             </div>
