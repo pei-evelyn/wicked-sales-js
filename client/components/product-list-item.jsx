@@ -6,9 +6,10 @@ function ProductListItem(props) {
   const priceArr = priceNum.split('');
   priceArr.splice((priceArr.length - 2), 0, '.');
   const price = priceArr.join('');
+  const setView = props.setView;
 
   return (
-    <div className="col-sm-4 d-flex align-items-stretch mb-4">
+    <div className="col-sm-4 d-flex align-items-stretch mb-4" onClick={setView()}>
       <div className="card">
         <img src={product.image} className="card-img-top product-list-img" alt={product.name} />
         <div className="card-body">
