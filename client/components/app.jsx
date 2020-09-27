@@ -36,7 +36,7 @@ class App extends React.Component {
       return (
         <>
           <Header text="$ Wicked Sales" />
-          <ProductDetails className="mt-4" setView={this.setView} />
+          <ProductDetails className="mt-4" setView={this.setView} productId={this.state.view.params} />
         </>
       );
     }

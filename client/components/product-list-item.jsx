@@ -8,7 +8,8 @@ function ProductListItem(props) {
   const price = priceArr.join('');
 
   return (
-    <div className="col-sm-4 d-flex align-items-stretch mb-4" onClick={() => props.setView('details', { productId: `${product.productId}` })}>
+    <div className="col-sm-4 d-flex align-items-stretch mb-4"
+      onClick={() => props.setView('details', { productId: product.productId })}>
       <div className="card">
         <img src={product.image} className="card-img-top product-list-img" alt={product.name} />
         <div className="card-body">
