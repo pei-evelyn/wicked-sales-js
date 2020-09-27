@@ -1,4 +1,22 @@
-img {
+.product-list-img {
   object-fit: scale-down;
   height: 300px;
+}
+
+.product-details-img {
+  object-fit: scale-down;
+  width: 100%;
+}
+
+.img-container {
+  width: 100%;
+}
+
+.back-arrow {
+  color: gray;
+  font-size: 16px;
+}
+
+.back-arrow:hover {
+  color: rgb(0, 91, 196);
 }
