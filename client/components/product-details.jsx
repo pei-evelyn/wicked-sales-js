@@ -10,7 +10,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/products/2')
+    fetch(`/api/products/${this.props.params.productId}`)
       .then(res => res.json())
       .then(product => this.setState({
         product: product
@@ -34,7 +34,7 @@ class ProductDetails extends React.Component {
         <div className="container my-5 border bg-white">
           <div className="row">
             <div className="col m-4">
-              <div className="back-arrow text-muted">
+              <div className="back-arrow" onClick={() => this.props.setView('catalog', {})}>
                 <i className="fas fa-chevron-left mr-2"></i>
                 <a>Back to catalog</a>
               </div>
