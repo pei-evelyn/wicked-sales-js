@@ -61,7 +61,29 @@ app.get('/api/products/:productId', (req, res, next) => {
 });
 
 app.get('/api/cart', (req, res, next) => {
-  res.status(200).json({});
+  if (!req.session.cartId) {
+    res.json([]);
+  } else {
+    const cartId = req.session.cartId;
+    const sql = `
+      select "ci"."cartItemId",
+             "ci"."price",
+             "p"."productId",
+             "p"."image",
+             "p"."name",
+             "p"."shortDescription"
+        from "cartItems" as "ci"
+        join "products" as "p" using ("productId")
+       where "ci"."cartId" = $1
+      `;
+    const params = [cartId];
+
+    db.query(sql, params)
+      .then(result => {
+        res.status(200).json(result.rows[0]);
+      })
+      .catch(err => console.error(err));
+  }
 });
 
 app.post('/api/cart', (req, res, next) => {
@@ -103,10 +125,11 @@ app.post('/api/cart', (req, res, next) => {
             cartId: cartId,
             price: price
           });
-        });
+        })
+        .catch(err => console.error(err));
     })
     .then(result => {
-      req.session.cardId = result.cartId;
+      req.session.cartId = result.cartId;
       const sql = `
         insert into "cartItems" ("cartId", "productId", "price")
         values ($1, $2, $3)
@@ -126,9 +149,10 @@ app.post('/api/cart', (req, res, next) => {
                "p"."shortDescription"
           from "cartItems" as "ci"
           join "products" as "p" using ("productId")
-         where "ci"."cartItemId" = ${cartItemId}
+         where "ci"."cartItemId" = $1
       `;
-      db.query(sql)
+      const params = [cartItemId];
+      db.query(sql, params)
         .then(queryResult => {
           res.status(201).json(queryResult.rows[0]);
         });
