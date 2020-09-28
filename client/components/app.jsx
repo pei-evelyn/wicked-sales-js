@@ -33,9 +33,11 @@ class App extends React.Component {
   getCartItems() {
     fetch('/api/cart')
       .then(res => res.json())
-      .then(data => this.setState({
-        cart: data
-      }))
+      .then(cartItems => {
+        this.setState({
+          cart: cartItems
+        });
+      })
       .catch(err => console.error(err));
   }
 
@@ -43,19 +45,18 @@ class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <>
-          <Header text="$ Wicked Sales" />
+          <Header text="$ Wicked Sales" cartCount={this.state.cart.length}/>
           <ProductList className="mt-4" setView={this.setView} />
         </>
       );
     } else {
       return (
         <>
-          <Header text="$ Wicked Sales" />
+          <Header text="$ Wicked Sales" cartCount={this.state.cart.length}/>
           <ProductDetails className="mt-4" setView={this.setView} params={this.state.view.params} />
         </>
       );
     }
-
   }
 }
 

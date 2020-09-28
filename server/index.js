@@ -75,9 +75,9 @@ app.get('/api/cart', (req, res, next) => {
       `;
     const params = [cartId];
 
-    db.query(sql, params)
+    return db.query(sql, params)
       .then(result => {
-        res.status(200).json(result.rows);
+        return res.status(200).json(result.rows);
       })
       .catch(err => console.error(err));
   }
