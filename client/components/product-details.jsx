@@ -50,7 +50,7 @@ class ProductDetails extends React.Component {
               <p className="mr-3">{this.state.product.shortDescription}</p>
             </div>
           </div>
-          <div className="row mb-4 mx-3">
+          <div className="row mb-4">
             <div className="col">
               <p>{this.state.product.longDescription}</p>
             </div>
