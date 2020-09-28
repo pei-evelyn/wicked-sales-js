@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 require('dotenv/config');
 const express = require('express');
 
@@ -5,6 +7,7 @@ const db = require('./database');
 const ClientError = require('./client-error');
 const staticMiddleware = require('./static-middleware');
 const sessionMiddleware = require('./session-middleware');
+const { query } = require('express');
 
 const app = express();
 
@@ -102,19 +105,33 @@ app.post('/api/cart', (req, res, next) => {
           });
         });
     })
-    .then(data => {
-      req.session.cardId = data.cartId;
-
-      const insertSql = `
+    .then(result => {
+      req.session.cardId = result.cartId;
+      const sql = `
         insert into "cartItems" ("cartId", "productId", "price")
         values ($1, $2, $3)
         returning "cartItemId"
       `;
-      const params = [data.cartId, productId, data.price];
-      return db.query(insertSql, params);
+      const params = [result.cartId, productId, result.price];
+      return db.query(sql, params);
     })
-    .then(data => {
-      // console.log(data);
+    .then(result => {
+      const cartItemId = result.rows[0].cartItemId;
+      const sql = `
+        select "ci"."cartItemId",
+               "ci"."price",
+               "p"."productId",
+               "p"."image",
+               "p"."name",
+               "p"."shortDescription"
+          from "cartItems" as "ci"
+          join "products" as "p" using ("productId")
+         where "ci"."cartItemId" = ${cartItemId}
+      `;
+      db.query(sql)
+        .then(queryResult => {
+          res.status(201).json(queryResult.rows[0]);
+        });
     })
     .catch(err => next(err));
 });
