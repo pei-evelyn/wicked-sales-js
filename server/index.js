@@ -103,9 +103,19 @@ app.post('/api/cart', (req, res, next) => {
         });
     })
     .then(data => {
+      req.session.cardId = data.cartId;
+
+      const insertSql = `
+        insert into "cartItems" ("cartId", "productId", "price")
+        values ($1, $2, $3)
+        returning "cartItemId"
+      `;
+      const params = [data.cartId, productId, data.price];
+      return db.query(insertSql, params);
+    })
+    .then(data => {
       // console.log(data);
     })
-    .then()
     .catch(err => next(err));
 });
 
