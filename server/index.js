@@ -62,16 +62,51 @@ app.get('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/cart', (req, res, next) => {
-  const product = req.body;
-  if (typeof product.productId === 'undefined') {
+  const productId = req.body.productId;
+  if (typeof productId === 'undefined') {
     res.status(400).json({
       error: 'Missing required value'
     });
-  } else if (product.productId < 0 || isNaN(product.productId)) {
+  } else if (productId < 0 || isNaN(productId)) {
     res.status(400).json({
-      error: `${product.productId} must be valid integer`
+      error: `${productId} must be valid integer`
     });
   }
+
+  const sql = `
+    select "price"
+    from "products"
+    where "productId" = $1;
+  `;
+  const value = [productId];
+
+  db.query(sql, value)
+    .then(result => {
+      if (result.rows.length === 0) {
+        throw (new ClientError(`ProductId ${productId} does not exist`, 400));
+      }
+
+      const price = result.rows[0].price;
+      const insertSql = `
+        insert into "carts" ("cartId", "createdAt")
+        values (default, default)
+        returning "cartId"
+      `;
+
+      return db.query(insertSql)
+        .then(insertResult => {
+          const cartId = insertResult.rows[0].cartId;
+          return ({
+            cartId: cartId,
+            price: price
+          });
+        });
+    })
+    .then(data => {
+      // console.log(data);
+    })
+    .then()
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
