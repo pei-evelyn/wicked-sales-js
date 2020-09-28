@@ -58,8 +58,20 @@ app.get('/api/products/:productId', (req, res, next) => {
 });
 
 app.get('/api/cart', (req, res, next) => {
-  res.status(200).json({})
-  ;
+  res.status(200).json({});
+});
+
+app.post('/api/cart', (req, res, next) => {
+  const product = req.body;
+  if (typeof product.productId === 'undefined') {
+    res.status(400).json({
+      error: 'Missing required value'
+    });
+  } else if (product.productId < 0 || isNaN(product.productId)) {
+    res.status(400).json({
+      error: `${product.productId} must be valid integer`
+    });
+  }
 });
 
 app.use('/api', (req, res, next) => {
