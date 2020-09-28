@@ -14,6 +14,11 @@ class App extends React.Component {
       cart: []
     };
     this.setView = this.setView.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+  }
+
+  componentDidMount() {
+    this.getCartItems();
   }
 
   setView(name, params) {
@@ -23,6 +28,15 @@ class App extends React.Component {
         params: params
       }
     });
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(res => res.json())
+      .then(data => this.setState({
+        cart: data
+      }))
+      .catch(err => console.error(err));
   }
 
   render() {
