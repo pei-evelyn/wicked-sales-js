@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 require('dotenv/config');
 const express = require('express');
 
@@ -7,7 +5,6 @@ const db = require('./database');
 const ClientError = require('./client-error');
 const staticMiddleware = require('./static-middleware');
 const sessionMiddleware = require('./session-middleware');
-const { query } = require('express');
 
 const app = express();
 
@@ -80,7 +77,7 @@ app.get('/api/cart', (req, res, next) => {
 
     db.query(sql, params)
       .then(result => {
-        res.status(200).json(result.rows[0]);
+        res.status(200).json(result.rows);
       })
       .catch(err => console.error(err));
   }
@@ -89,11 +86,13 @@ app.get('/api/cart', (req, res, next) => {
 app.post('/api/cart', (req, res, next) => {
   const productId = req.body.productId;
   if (typeof productId === 'undefined') {
-    res.status(400).json({
+    return res.status(400).json({
       error: 'Missing required value'
     });
-  } else if (productId < 0 || isNaN(productId)) {
-    res.status(400).json({
+  }
+
+  if (productId < 0 || isNaN(productId)) {
+    return res.status(400).json({
       error: `${productId} must be valid integer`
     });
   }
@@ -118,15 +117,23 @@ app.post('/api/cart', (req, res, next) => {
         returning "cartId"
       `;
 
-      return db.query(insertSql)
-        .then(insertResult => {
-          const cartId = insertResult.rows[0].cartId;
-          return ({
-            cartId: cartId,
-            price: price
-          });
-        })
-        .catch(err => console.error(err));
+      if (!req.session.cartId) {
+        return db.query(insertSql)
+          .then(insertResult => {
+            const cartId = insertResult.rows[0].cartId;
+            return ({
+              cartId: cartId,
+              price: price
+            });
+          })
+          .catch(err => console.error(err));
+      } else {
+        return ({
+          cartId: req.session.cartId,
+          price: price
+        });
+      }
+
     })
     .then(result => {
       req.session.cartId = result.cartId;
@@ -152,7 +159,7 @@ app.post('/api/cart', (req, res, next) => {
          where "ci"."cartItemId" = $1
       `;
       const params = [cartItemId];
-      db.query(sql, params)
+      return db.query(sql, params)
         .then(queryResult => {
           res.status(201).json(queryResult.rows[0]);
         });
