@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -114,6 +116,21 @@ class App extends React.Component {
             setView={this.setView}
           />
           <CartSummary cart={this.state.cart} setView={this.setView}/>
+        </>
+      );
+    } else if (this.state.view.name === 'checkout') {
+      return (
+        <>
+          <Header
+            text="$ Wicked Sales"
+            cartCount={this.state.cart.length}
+            setView={this.setView}
+          />
+          <CheckoutForm
+            setView={this.setView}
+            placeOrder={this.placeOrder}
+            cart={this.state.cart}
+          />
         </>
       );
     }
