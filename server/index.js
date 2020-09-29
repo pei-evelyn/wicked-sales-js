@@ -173,6 +173,29 @@ app.post('/api/orders', (req, res, next) => {
       error: 'CartId is required'
     });
   }
+
+  const data = req.body;
+
+  if (typeof data.name === 'undefined' ||
+      typeof data.creditCard === 'undefined' ||
+      typeof data.shippingAddress === 'undefined') {
+    return res.status(400).json({
+      error: 'Missing required value'
+    });
+  }
+
+  const sql = `
+    insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+    values ($1, $2, $3, $4)
+    returning *;
+  `;
+  const params = [req.session.cartId, data.name, data.creditCard, data.shippingAddress];
+
+  db.query(sql, params)
+    .then(result => {
+      delete req.session.cartId;
+      return res.status(201).json(result.rows[0]);
+    });
 });
 
 app.use('/api', (req, res, next) => {
