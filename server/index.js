@@ -174,12 +174,6 @@ app.post('/api/orders', (req, res, next) => {
     throw (new ClientError('Missing required value', 400));
   }
 
-  const creditCard = parseInt(data.creditCard, 10);
-
-  if (isNaN(creditCard)) {
-    throw (new ClientError(`CreditCard Number ${data.creditCard} must be valid integers`, 400));
-  }
-
   const sql = `
     insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
     values ($1, $2, $3, $4)
