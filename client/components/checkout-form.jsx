@@ -37,6 +37,13 @@ class CheckoutForm extends React.Component {
                 <label htmlFor="shippingAddress">Name</label>
                 <textarea className="form-control" id="shippingAddress" rows="3"></textarea>
               </div>
+              <div className="d-flex justify-content-between">
+                <div className="back-arrow" onClick={() => this.props.setView('catalog', {})}>
+                  <i className="fas fa-chevron-left mr-2"></i>
+                  <a>Continue Shopping</a>
+                </div>
+                <button type="submit" className="btn btn-primary">Place Order</button>
+              </div>
             </form>
           </div>
         </div>
