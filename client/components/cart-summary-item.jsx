@@ -8,7 +8,7 @@ function CartSummaryItem(props) {
   // const price = priceArr.join('');
 
   return (
-    <div className="row">
+    <div className="row border">
       <div className="col-4">
         <img src="" alt=""/>
       </div>
