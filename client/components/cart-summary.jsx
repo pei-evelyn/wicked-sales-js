@@ -43,12 +43,15 @@ function CartSummary(props) {
       </div>
       {cartItems}
       <div className="row my-5">
-        <h2 className="col">
+        <h2 className="col-6 pl-0">
           Total Price:
           <span className="ml-3">
             <SumTotal cart={props.cart}/>
           </span>
         </h2>
+        <div className="col-6 d-flex justify-content-end pr-0">
+          <button className="btn btn-lg btn-primary" onClick={() => props.setView('checkout', {})}>Checkout</button>
+        </div>
       </div>
     </div>
   );
