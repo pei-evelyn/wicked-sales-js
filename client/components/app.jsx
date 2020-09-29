@@ -97,7 +97,7 @@ class App extends React.Component {
             cartCount={this.state.cart.length}
             setView={this.setView}
           />
-          <CartSummary cart={this.state.cart}/>
+          <CartSummary cart={this.state.cart} setView={this.setView}/>
         </>
       );
     }
