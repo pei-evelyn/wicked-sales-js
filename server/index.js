@@ -33,9 +33,7 @@ app.get('/api/products', (req, res, next) => {
 app.get('/api/products/:productId', (req, res, next) => {
   const productId = parseInt(req.params.productId, 10);
   if (productId < 0 || isNaN(productId)) {
-    return res.status(400).json({
-      error: 'Product ID must be valid'
-    });
+    throw (new ClientError('Product ID must be valid', 400));
   }
 
   const sql = `
@@ -86,15 +84,11 @@ app.get('/api/cart', (req, res, next) => {
 app.post('/api/cart', (req, res, next) => {
   const productId = req.body.productId;
   if (typeof productId === 'undefined') {
-    return res.status(400).json({
-      error: 'Missing required value'
-    });
+    throw (new ClientError('Missing required value', 400));
   }
 
   if (productId < 0 || isNaN(productId)) {
-    return res.status(400).json({
-      error: `${productId} must be valid integer`
-    });
+    throw (new ClientError(`ProductId ${productId} must be valid integer`, 400));
   }
 
   const sql = `
@@ -165,6 +159,33 @@ app.post('/api/cart', (req, res, next) => {
         });
     })
     .catch(err => next(err));
+});
+
+app.post('/api/orders', (req, res, next) => {
+  if (!req.session.cartId) {
+    throw (new ClientError('CartId does not exist', 400));
+  }
+
+  const data = req.body;
+
+  if (typeof data.name === 'undefined' ||
+      typeof data.creditCard === 'undefined' ||
+      typeof data.shippingAddress === 'undefined') {
+    throw (new ClientError('Missing required value', 400));
+  }
+
+  const sql = `
+    insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+    values ($1, $2, $3, $4)
+    returning "orderId", "createdAt", "name", "creditCard", "shippingAddress";
+  `;
+  const params = [req.session.cartId, data.name, data.creditCard, data.shippingAddress];
+
+  db.query(sql, params)
+    .then(result => {
+      delete req.session.cartId;
+      return res.status(201).json(result.rows[0]);
+    });
 });
 
 app.use('/api', (req, res, next) => {
