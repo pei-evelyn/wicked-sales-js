@@ -19,7 +19,6 @@ function Header(props) {
             <span className="mr-2">{cartItems}</span>
             <i className="fas fa-shopping-cart"></i>
           </div>
-
         </nav>
       </header>
     </div>

@@ -41,6 +41,24 @@ class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  addToCart(product) {
+    fetch('/api/cart', {
+      method: 'POST',
+      body: JSON.stringify(product),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(productData => this.setState(state => {
+        const cartList = state.cart.concat(productData);
+        return ({
+          cart: cartList
+        });
+      }))
+      .catch(err => console.error(err));
+  }
+
   render() {
     if (this.state.view.name === 'catalog') {
       return (
