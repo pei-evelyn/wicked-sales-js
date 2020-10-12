@@ -84,18 +84,18 @@ class App extends React.Component {
       return (
         <>
           <Header
-            text="$ Wicked Sales"
             cartCount={this.state.cart.length}
             setView={this.setView}
           />
           <ProductList className="mt-4" setView={this.setView} />
         </>
       );
-    } else if (this.state.view.name === 'details') {
+    }
+
+    if (this.state.view.name === 'details') {
       return (
         <>
           <Header
-            text="$ Wicked Sales"
             cartCount={this.state.cart.length}
             setView={this.setView}
           />
@@ -107,22 +107,24 @@ class App extends React.Component {
           />
         </>
       );
-    } else if (this.state.view.name === 'cart') {
+    }
+
+    if (this.state.view.name === 'cart') {
       return (
         <>
           <Header
-            text="$ Wicked Sales"
             cartCount={this.state.cart.length}
             setView={this.setView}
           />
           <CartSummary cart={this.state.cart} setView={this.setView}/>
         </>
       );
-    } else if (this.state.view.name === 'checkout') {
+    }
+
+    if (this.state.view.name === 'checkout') {
       return (
         <>
           <Header
-            text="$ Wicked Sales"
             cartCount={this.state.cart.length}
             setView={this.setView}
           />

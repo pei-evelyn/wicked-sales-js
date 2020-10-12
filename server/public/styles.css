@@ -28,6 +28,23 @@
   height: 250px;
 }
 
-.cart-btn:hover {
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-family: 'EB Garamond', serif;
+}
+
+.bg-black {
+  background-color: #000000;
+  font-family: 'EB Garamond', serif;
+}
+
+.navbar-logo {
+  height: 40px;
+}
+
+.cursor-pointer {
   cursor: pointer;
 }
