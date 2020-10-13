@@ -32,19 +32,56 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'EB Garamond', serif;
 }
 
 .bg-black {
-  background-color: #000000;
-  font-family: 'EB Garamond', serif;
+  background-color: rgb(24, 24, 24);
 }
 
 .navbar-logo {
-  height: 40px;
+  height: 35px;
 }
 
 .cursor-pointer {
   cursor: pointer;
 }
+
+.hero-img {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url('images/hero-img.jpg');
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 95vh;
+  width: 100%;
+}
+
+.hero-text {
+  background-color: transparent;
+  height: 90%;
+}
+
+/* .modal-overlay {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(24, 24, 24, 0.5);
+}
+
+.modal-content {
+  width: 50%;
+  height: 40vh;
+  background-color: rgb(41, 41, 41);
+  color: rgb(255, 255, 255)
+} */

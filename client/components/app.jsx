@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import Modal from './modal';
 
 class App extends React.Component {
   constructor(props) {
@@ -83,11 +84,23 @@ class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <>
+          <Modal view={this.state.view.name} />
           <Header
             cartCount={this.state.cart.length}
             setView={this.setView}
           />
-          <ProductList className="mt-4" setView={this.setView} />
+          <main className="container-fluid p-0">
+            <div className="hero-img">
+              <div className="jumbotron hero-text">
+                <div className="container">
+                  <h1 className="display-4">Fluid jumbotron</h1>
+                  <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <ProductList className="mt-4" setView={this.setView} />
+          </main>
         </>
       );
     }
@@ -124,6 +137,7 @@ class App extends React.Component {
     if (this.state.view.name === 'checkout') {
       return (
         <>
+          <Modal view={this.state.view.name} />
           <Header
             cartCount={this.state.cart.length}
             setView={this.setView}
