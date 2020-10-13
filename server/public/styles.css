@@ -29,7 +29,7 @@
 }
 
 .back-arrow:hover {
-  color: rgb(134, 134, 134);
+  color: rgb(201, 201, 201);
   transition: color 0.1s ease;
 }
 
@@ -55,7 +55,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 35px;
 }
 
-.cursor-pointer {
+.cursor-pointer,
+.back-arrow,
+.card-container {
   cursor: pointer;
 }
 
@@ -79,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-text {
-  width: 90%;
+  width: 88%;
   font-weight: 400;
 }
 

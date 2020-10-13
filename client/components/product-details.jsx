@@ -34,9 +34,7 @@ class ProductDetails extends React.Component {
         <div className="container my-5 border bg-white detail-container">
           <div className="row">
             <div className="col-md m-4">
-              <div className="back-arrow" onClick={() => this.props.setView('catalog', {})}>
-                <i className="fas fa-chevron-left mr-2 cursor-pointer"></i>
-              </div>
+              <i className="fas fa-chevron-left mr-2 cursor-pointer back-arrow" onClick={() => this.props.setView('catalog', {})}></i>
             </div>
           </div>
           <div className="row mb-3 mt-4">
