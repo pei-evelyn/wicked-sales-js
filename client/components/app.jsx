@@ -4,13 +4,14 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import Modal from './modal';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'homepage',
         params: {}
       },
       cart: []
@@ -23,6 +24,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getCartItems();
+
   }
 
   setView(name, params) {
@@ -80,22 +82,64 @@ class App extends React.Component {
   }
 
   render() {
+    if (this.state.view.name === 'homepage') {
+      return (
+        <>
+          <Modal view={this.state.view.name} setView={this.setView}/>
+          <Header
+            cartCount={this.state.cart.length}
+            setView={this.setView}
+          />
+          <main className="container-fluid p-0">
+            <div className="hero-img">
+              <div className="jumbotron hero-banner">
+                <div className="jumbo-container container d-flex flex-column justify-content-center align-items-center">
+                  <h1 className="mb-4 hero-heading">Fragrance with a conscience.</h1>
+                  <p className="lead hero-text mb-4">
+                    Inspiring positive change by creating the world&apos;s best
+                    100% natural perfume, without compromising on ethics or aesthetics.
+                    At Monocle, that is our promise to you.
+                  </p>
+                  <img src="/images/favicon.png" alt="Monocle Logo Black" />
+                </div>
+              </div>
+            </div>
+          </main>
+        </>
+      );
+    }
+
     if (this.state.view.name === 'catalog') {
       return (
         <>
           <Header
-            text="$ Wicked Sales"
             cartCount={this.state.cart.length}
             setView={this.setView}
           />
-          <ProductList className="mt-4" setView={this.setView} />
+          <main className="container-fluid p-0">
+            <div className="hero-img">
+              <div className="jumbotron hero-banner">
+                <div className="jumbo-container container d-flex flex-column justify-content-center align-items-center">
+                  <h1 className="mb-4 hero-heading">Fragrance with a conscience.</h1>
+                  <p className="lead hero-text mb-4">
+                    Inspiring positive change by creating the world&apos;s best
+                    100% natural perfume, without compromising on ethics or aesthetics.
+                    At Monocle, that is our promise to you.
+                  </p>
+                  <img src="/images/favicon.png" alt="Monocle Logo Black" />
+                </div>
+              </div>
+            </div>
+            <ProductList className="mt-4" setView={this.setView} />
+          </main>
         </>
       );
-    } else if (this.state.view.name === 'details') {
+    }
+
+    if (this.state.view.name === 'details') {
       return (
         <>
           <Header
-            text="$ Wicked Sales"
             cartCount={this.state.cart.length}
             setView={this.setView}
           />
@@ -107,22 +151,25 @@ class App extends React.Component {
           />
         </>
       );
-    } else if (this.state.view.name === 'cart') {
+    }
+
+    if (this.state.view.name === 'cart') {
       return (
         <>
           <Header
-            text="$ Wicked Sales"
             cartCount={this.state.cart.length}
             setView={this.setView}
           />
           <CartSummary cart={this.state.cart} setView={this.setView}/>
         </>
       );
-    } else if (this.state.view.name === 'checkout') {
+    }
+
+    if (this.state.view.name === 'checkout') {
       return (
         <>
+          <Modal view={this.state.view.name} />
           <Header
-            text="$ Wicked Sales"
             cartCount={this.state.cart.length}
             setView={this.setView}
           />

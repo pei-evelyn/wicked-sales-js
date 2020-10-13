@@ -30,6 +30,9 @@ class CheckoutForm extends React.Component {
 
   SumTotal(props) {
     const cartItems = this.props.cart;
+    if (cartItems.length === 0) {
+      return '$0.00';
+    }
     const priceArr = [];
     cartItems.forEach(item => {
       priceArr.push(item.price);
@@ -94,11 +97,10 @@ class CheckoutForm extends React.Component {
               <div className="d-flex justify-content-between">
                 <div className="back-arrow" onClick={() => this.props.setView('catalog', {})}>
                   <i className="fas fa-chevron-left mr-2"></i>
-                  <a>Continue Shopping</a>
                 </div>
                 <input
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-secondary"
                   value="Place Order"
                 />
               </div>

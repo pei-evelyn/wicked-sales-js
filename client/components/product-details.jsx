@@ -31,28 +31,27 @@ class ProductDetails extends React.Component {
   render() {
     if (this.state.product) {
       return (
-        <div className="container my-5 border bg-white">
+        <div className="container my-5 border bg-white detail-container">
           <div className="row">
-            <div className="col m-4">
+            <div className="col-md m-4">
               <div className="back-arrow" onClick={() => this.props.setView('catalog', {})}>
-                <i className="fas fa-chevron-left mr-2"></i>
-                <a>Back to catalog</a>
+                <i className="fas fa-chevron-left mr-2 cursor-pointer"></i>
               </div>
             </div>
           </div>
-          <div className="row mb-3">
-            <div className="col-6 img-container d-flex justify-content-center align-items-center">
+          <div className="row mb-3 mt-4">
+            <div className="col-md-6 img-container d-flex justify-content-center align-items-center">
               <img src={this.state.product.image} alt="" className="product-details-img" />
             </div>
-            <div className="col-6">
-              <h1 className="mb-4">{this.state.product.name}</h1>
-              <h4 className="mb-4 text-muted">${this.formatPrice()}</h4>
+            <div className="col-md-6 product-details-text">
+              <h2 className="mb-4">{this.state.product.name}</h2>
+              <h5 className="mb-4 text-muted">${this.formatPrice()}</h5>
               <p className="mr-3">{this.state.product.shortDescription}</p>
-              <button className="btn btn-primary" onClick={() => this.props.addToCart(this.state.product)}>Add to Cart</button>
+              <button className="btn btn-secondary mt-3" onClick={() => this.props.addToCart(this.state.product)}>Add to Cart</button>
             </div>
           </div>
-          <div className="row mb-4">
-            <div className="col">
+          <div className="row mb-4 product-details-long">
+            <div className="col-md m-4">
               <p>{this.state.product.longDescription}</p>
             </div>
           </div>
