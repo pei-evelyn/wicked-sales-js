@@ -30,6 +30,9 @@ class CheckoutForm extends React.Component {
 
   SumTotal(props) {
     const cartItems = this.props.cart;
+    if (cartItems.length === 0) {
+      return '$0.00';
+    }
     const priceArr = [];
     cartItems.forEach(item => {
       priceArr.push(item.price);

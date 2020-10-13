@@ -135,4 +135,13 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     margin-top: 1rem;
   }
+  .product-details-img {
+    margin-bottom: 1rem;
+  }
+  .product-details-text {
+    text-align: center;
+  }
+  .product-details-long {
+    display: none;
+  }
 }

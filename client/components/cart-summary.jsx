@@ -3,6 +3,9 @@ import CartSummaryItem from './cart-summary-item';
 
 function SumTotal(props) {
   const cartItems = props.cart;
+  if (cartItems.length === 0) {
+    return '$0.00';
+  }
   const priceArr = [];
   cartItems.forEach(item => {
     priceArr.push(item.price);
