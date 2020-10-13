@@ -31,26 +31,25 @@ function CartSummary(props) {
   return (
     <div className="container">
       <div className="row">
-        <div className="col my-4">
+        <div className="col-md my-4">
           <div className="back-arrow" onClick={() => props.setView('catalog', {})}>
             <i className="fas fa-chevron-left mr-2"></i>
-            <a>Back to catalog</a>
           </div>
         </div>
       </div>
       <div className="row mb-3">
-        <h1 className="col">My Cart</h1>
+        <h2 className="col-md">My Cart</h2>
       </div>
       {cartItems}
       <div className="row my-5">
-        <h2 className="col-6 pl-0">
+        <h4 className="col-md-6 pl-0 total-price">
           Total Price:
           <span className="ml-3">
             <SumTotal cart={props.cart}/>
           </span>
-        </h2>
-        <div className="col-6 d-flex justify-content-end pr-0">
-          <button className="btn btn-lg btn-primary" onClick={() => props.setView('checkout', {})}>Checkout</button>
+        </h4>
+        <div className="col-md-6 pr-0 checkout-btn">
+          <button className="btn btn-secondary" onClick={() => props.setView('checkout', {})}>CHECKOUT</button>
         </div>
       </div>
     </div>

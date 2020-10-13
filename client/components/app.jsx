@@ -94,7 +94,7 @@ class App extends React.Component {
             <div className="hero-img">
               <div className="jumbotron hero-banner">
                 <div className="jumbo-container container d-flex flex-column justify-content-center align-items-center">
-                  <h1 className="display-3 mb-4">Fragrance with a conscience.</h1>
+                  <h1 className="mb-4 hero-heading">Fragrance with a conscience.</h1>
                   <p className="lead hero-text mb-4">
                     Inspiring positive change by creating the world&apos;s best
                     100% natural perfume, without compromising on ethics or aesthetics.
@@ -120,7 +120,7 @@ class App extends React.Component {
             <div className="hero-img">
               <div className="jumbotron hero-banner">
                 <div className="jumbo-container container d-flex flex-column justify-content-center align-items-center">
-                  <h1 className="display-3 mb-4">Fragrance with a conscience.</h1>
+                  <h1 className="mb-4 hero-heading">Fragrance with a conscience.</h1>
                   <p className="lead hero-text mb-4">
                     Inspiring positive change by creating the world&apos;s best
                     100% natural perfume, without compromising on ethics or aesthetics.

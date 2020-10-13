@@ -44,8 +44,8 @@ class ProductDetails extends React.Component {
               <img src={this.state.product.image} alt="" className="product-details-img" />
             </div>
             <div className="col-6">
-              <h1 className="mb-4">{this.state.product.name}</h1>
-              <h4 className="mb-4 text-muted">${this.formatPrice()}</h4>
+              <h2 className="mb-4">{this.state.product.name}</h2>
+              <h5 className="mb-4 text-muted">${this.formatPrice()}</h5>
               <p className="mr-3">{this.state.product.shortDescription}</p>
               <button className="btn btn-secondary mt-3" onClick={() => this.props.addToCart(this.state.product)}>Add to Cart</button>
             </div>

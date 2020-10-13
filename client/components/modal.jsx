@@ -40,7 +40,7 @@ class Modal extends React.Component {
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h4 className="modal-title">Hello there!</h4>
+                <h4 className="modal-title">ATTENTION:</h4>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true" onClick={() => this.handleClick()}>&times;</span>
                 </button>
@@ -67,7 +67,7 @@ class Modal extends React.Component {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Hello there!</h4>
+              <h4 className="modal-title">ATTENTION:</h4>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true" onClick={() => this.props.setView('catalog', {})}>&times;</span>
               </button>

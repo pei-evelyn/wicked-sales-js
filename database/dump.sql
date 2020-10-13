@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.12 (Ubuntu 10.12-0ubuntu0.18.04.1)
--- Dumped by pg_dump version 10.12 (Ubuntu 10.12-0ubuntu0.18.04.1)
+-- Dumped from database version 10.14 (Ubuntu 10.14-0ubuntu0.18.04.1)
+-- Dumped by pg_dump version 10.14 (Ubuntu 10.14-0ubuntu0.18.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -229,18 +229,10 @@ ALTER TABLE ONLY public.products ALTER COLUMN "productId" SET DEFAULT nextval('p
 --
 
 COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
-11	21	2	2595
-12	21	2	2595
-13	21	3	2900
-14	21	4	999
-15	22	1	2999
-16	22	1	2999
-17	22	3	2900
-18	22	5	9900
-19	22	4	999
-20	22	1	2999
-21	22	3	2900
-22	22	5	9900
+25	24	3	12500
+26	24	2	12000
+27	25	5	10000
+28	25	4	13000
 \.
 
 
@@ -251,6 +243,9 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 COPY public.carts ("cartId", "createdAt") FROM stdin;
 21	2020-09-28 15:14:14.027413-07
 22	2020-09-28 17:16:40.041385-07
+23	2020-09-30 12:33:24.196237-07
+24	2020-10-12 22:04:00.469702-07
+25	2020-10-13 09:14:20.009217-07
 \.
 
 
@@ -259,6 +254,7 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 --
 
 COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", "createdAt") FROM stdin;
+1	23	Evelyn Pei	12312398374239847	asfdasdfsdf	2020-09-30 12:33:36.280358-07
 \.
 
 
@@ -267,12 +263,12 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-1	Shake Weight	2999	/images/shake-weight.jpg	Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-2	ShamWow	2595	/images/shamwow.jpg	It's like a chamois, towel, and sponge, all in one! Soaks up to 10x it's weight in any liquid!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-3	Snuggie	2900	/images/snuggie.jpg	Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-4	Wax Vac	999	/images/wax-vac.jpg	Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-5	Ostrich Pillow	9900	/images/ostrich-pillow.jpg	Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-6	Tater Mitts	830	/images/tater-mitts.jpg	8 Seconds is all you need with Tater Mitts. Quickly and easily prepare all your favorite potato dishes with Tater Mitts.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock.\\nAesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
+1	Scent One: Hinoki	12000	/images/hinoki.jpg	Produced for Monocle by Comme des Garçons perfumer, Antoine Maisondieu, the inspiration for Hinoki comes from a perfectly still, slightly chilly spring morning spent soaking in an indoor/outdoor tub at the Tawaraya in Kyoto. It pulls together our memory of the mosses and trees outdoors and the sharp notes of the boxy hinoki tub.	Hinoki takes its name from the hinoki cypress, a tree that only grows in Japan and is the preferred wood for building palaces, temples, shrines and the finest wooden soaking baths. It was inspired by a visit to Tawaraya, a famous three-centuries-old traditional Japanese inn located in Kyoto. Soaking in the legendary open-air hinoki ofuro (wooden bath) filled with warm spring water on a chilly morning, the idea for the perfume was born and the result is breathtaking. The ofuro is captured perfectly: the full, rich scent of the wood, the smells of the surrounding greenery, the soft touch of meditative incense, the memories of native moss. Hinoki is a dry, woody-fresh scent with an intangible ”something” that gives it a mystical edge and the ability, much like CdGs Incense Series, to conjure the exact emotion and feel of the idea behind its creation and name.
+3	Scent Three: Sugi	12500	/images/sugi.jpg	Sugi – also known as Japanese cedar – is popular as an ornamental plant in Japan and has a delicate, clean and energising fragrance. After our collaborations with Comme des Garçons on Hinoki and Laurel we returned to them for this third scent. Developed in Paris by Antoine Maisondieu it comes in a Monocle-designed bottle and box. It is a refreshing scent that’s light but sophisticated, beginning with top notes of Mediterranean cypress and pepper from Madagascar, followed by iris from Florence and cedar from Virginia, and finished with pine and Haitian vetiver.	Sugi – also known as Japanese cedar – is popular as an ornamental plant in Japan and has a delicate, clean and energising fragrance. After the great success of our first collaborations with Comme des Garçons – Hinoki and Laurel – we have returned to them for this third scent, which has been developed in Paris by Antoine Maisondieu and comes in a Monocle-designed bottle and box. Its a refreshing unisex scent thats light but sophisticated, beginning with top notes of Mediterranean cypress and pepper from Madagascar, followed by iris from Florence and cedar from Virginia, and finished with pine and Haitian vetiver.
+4	Scent Four: Yoyogi	13000	/images/yoyogi.jpg	We’ve partnered with Comme des Garçons once more to develop our fourth scent: Yoyogi. Created in Paris by perfumer Nathalie Cetto, the fragrance was conceived by Monocle’s team and the fashion label’s Adrian Joffe before being perfected in the laboratory of Switzerland-based Givaudan. The appealing unisex scent takes its woody lead from cypress, freshly mown grass and wormwood and was designed to evoke the sensation of an early-morning run around its namesake: Yoyogi Park in Tokyo.	Yoyogi Park is one of the most beloved and celebrated green spaces in Tokyo. Nestled between the ultra-hip youth fashion mecca of Harajuku and the bustling social center of Shibuya, Yoyogi is a serene oasis, miles of soft grass, sparkling ponds, and the shade of gingko trees- a park for everyday Tokyo residents to congregate, relax, and play. Tyler Brûlé, the founder of Monocle Magazine, found himself inspired during his morning jogs there, and so with the help of Comme des Garcons he set out to create a scent that captures the unique feeling of natural serenity that can occur in one of the worlds busiest metropolises. And true to form, Yoyogi is a scent both serene and energetic, a perfect combination of soothing green notes resting on the negative space of the smoky, spicy cityscape beyond. Aromatic cypress lends a distinctly contemplative Japanese character, while the unmistakable crispness of freshly cut grass immediately puts us in Brûlés jogging shoes on a dewey morning, the sun still low in the sky, the park nearly deserted and silent. As sweet, herbaceous chamomile and bitter, resinous wormwood emerge in the latter stages, we begin to experience the park- and Tokyo- at midday, an escape from the traffic and hustle but still fundamentally at the centre of the city- the kind of modern touch CDG is beloved for. Serene and natural, modern and exciting, all at one- thats the undeniably striking effect of a single spray of Yoyogi.
+5	Candle One: Hinoki	10000	/images/candle.jpg	The inspiration for our candle, made by Comme des Garçons in France, comes from a perfectly still, slightly chilly spring morning spent soaking in an indoor – or outdoor – tub in Kyoto. It is reminiscent of the moss and trees outside and the sharp notes of the boxy hinoki tub.	The inspiration for our candle, made by Comme des Garçons in France, comes from a perfectly still, slightly chilly spring morning spent soaking in an indoor – or outdoor – tub in Kyoto. It is reminiscent of the moss and trees outside and the sharp notes of the boxy hinoki tub.
+6	Travel-Sized Toiletry Set	10000	/images/balm.jpg	We’ve collaborated with our favourite Welsh lavender farm to create a must-have travel-sized toiletry set, which comprises: hand cream, foot cream, face cream, lotion, scrub and body wash – all made using the best essential oils. Stay alert with the inclusion of an awake balm and wind down with their calm balm, both of which are made with a necessary combination of ingredients. Not to be sniffed at.	We’ve collaborated with our favourite Welsh lavender farm to create a must-have travel-sized toiletry set, which comprises: hand cream, foot cream, face cream, lotion, scrub and body wash – all made using the best essential oils. Stay alert with the inclusion of an awake balm and wind down with their calm balm, both of which are made with a necessary combination of ingredients. Not to be sniffed at.
+2	Scent Two: Laurel	12000	/images/laurel.jpg	Produced for Monocle by Comme des Garçons perfumer, Antoine Maisondieu, Laurel captures the scent and sensation enjoyed while staying with friends in Batroun, Lebanon. While many wonderful aromas drifted through their ancient garden, it was the distinctive scent of Laurel that punctuated an early spring weekend in the eastern Mediterranean. Laurel is warm, inviting and at times a little sharp - just like the country itself.	Lebanon has been popping up on the radar as one of the hippest travel destinations on the planet, and its no wonder the two trend-setters who already teamed up for the best-selling Hinoki, Comme des Garçons and Monocle magazine, found inspiration in the Country of the Cedars for their Scent Two. “We wanted to capture the same smell and sensation enjoyed while staying with friends in Batroun, Lebanon. Its warm, inviting and at times a little sharp – just like the country, ” says Monocle editor in chief, Tyler Brûlé.Cedar, then, obviously, tinged with incense – after all, “Lebanon” and “olibanum”, another name for frankincense, share the same etymology – and the namesake laurel (the antiseptic laurel bay essential oil is used in Lebanon to make the traditional, olive-oil based Alep soap). A dash of herbs sprinkled with pepper on a warm amber base infuse Laurel with a dry, bracing aroma that redefines the very notion of freshness perfumery. A stunning achievement.
 \.
 
 
@@ -280,21 +276,21 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 22, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 28, true);
 
 
 --
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 22, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 25, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 1, false);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 1, true);
 
 
 --
