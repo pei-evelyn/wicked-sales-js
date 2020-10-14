@@ -11,7 +11,7 @@ A full stack shopping cart application built with Node.js &amp; React.
 - Bootstrap 4
 - CSS3
 - HTML5
-- NPM
+- npm
 - Webpack
 - Babel
 - Media Queries
@@ -51,8 +51,14 @@ Try the application live at [https://monocle.evelynpei.com/](https://monocle.eve
     git clone https://github.com/pei-evelyn/wicked-sales-js
     cd wicked-sales-js
     ```
-2. Install all dependencies with NPM.
+2. Install all dependencies with npm.
 
     ```shell
     npm install
+    ```
+
+3. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
+
+    ```shell
+    npm run dev
     ```
