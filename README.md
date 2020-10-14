@@ -1,6 +1,6 @@
 # wicked-sales-js
 
-A full stack shopping cart application built with Node.js &amp; React.
+An interactive full stack shopping cart application built with Node.js &amp; React, simulating an actual beauty and fragrance ecommerce site
 
 ## Technologies Used
 
