@@ -94,7 +94,7 @@ class CheckoutForm extends React.Component {
                   required
                 />
               </div>
-              <div className="d-flex justify-content-between mt-5">
+              <div className="d-flex justify-content-between my-5 ">
                 <div className="back-arrow" onClick={() => this.props.setView('catalog', {})}>
                   <i className="fas fa-chevron-left mr-2"></i>
                 </div>
