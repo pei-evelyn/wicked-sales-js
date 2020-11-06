@@ -37,7 +37,7 @@ class Modal extends React.Component {
     if (this.state.view === 'checkout') {
       return (
         <div className={`modal fade ${(!this.state.isHidden ? 'show d-block' : 'd-none')}`} tabIndex="-1" role="dialog" aria-hidden="true">
-          <div className="modal-dialog" role="document">
+          <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h4 className="modal-title">ATTENTION:</h4>
@@ -64,7 +64,7 @@ class Modal extends React.Component {
 
     return (
       <div className={`modal fade ${(!this.state.isHidden ? 'show d-block' : 'd-none')}`} tabIndex="-1" role="dialog" aria-hidden="true">
-        <div className="modal-dialog" role="document">
+        <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h4 className="modal-title">ATTENTION:</h4>
