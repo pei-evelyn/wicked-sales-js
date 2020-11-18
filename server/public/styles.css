@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
   background-position: top;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 95vh;
+  height: 80vh;
   width: 100%;
 }
 
@@ -106,6 +106,23 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.55);
+}
+
+.footer {
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+}
+
+.footer > p {
+  color: beige;
+  display: inline-block;
+  font-size: 10px;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: 2px;
 }
 
 @media screen and (max-width: 1024px) and (min-width: 760px) {
