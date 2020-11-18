@@ -5,6 +5,7 @@ import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import Modal from './modal';
+import Footer from './footer';
 
 class App extends React.Component {
   constructor(props) {
@@ -132,6 +133,7 @@ class App extends React.Component {
             </div>
             <ProductList className="mt-4" setView={this.setView} />
           </main>
+          <Footer />
         </>
       );
     }
@@ -149,6 +151,7 @@ class App extends React.Component {
             params={this.state.view.params}
             addToCart={this.addToCart}
           />
+          <Footer />
         </>
       );
     }
@@ -161,6 +164,7 @@ class App extends React.Component {
             setView={this.setView}
           />
           <CartSummary cart={this.state.cart} setView={this.setView}/>
+          <Footer />
         </>
       );
     }
@@ -178,6 +182,7 @@ class App extends React.Component {
             placeOrder={this.placeOrder}
             cart={this.state.cart}
           />
+          <Footer />
         </>
       );
     }
