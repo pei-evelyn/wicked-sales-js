@@ -108,6 +108,10 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(0, 0, 0, 0.55);
 }
 
+.height-80 {
+  height: 80vh;
+}
+
 .footer {
   background-color: #000000;
   display: flex;
