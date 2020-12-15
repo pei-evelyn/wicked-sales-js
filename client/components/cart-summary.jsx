@@ -32,7 +32,7 @@ function CartSummary(props) {
     />
   );
   return (
-    <div className="container">
+    <div className="container height-80">
       <div className="row">
         <div className="col-md my-4">
           <div className="back-arrow" onClick={() => props.setView('catalog', {})}>

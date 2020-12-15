@@ -48,7 +48,7 @@ class CheckoutForm extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container height-80">
         <div className="row mb-4">
           <div className="col">
             <h1 className="mt-5 mb-4">Checkout</h1>
